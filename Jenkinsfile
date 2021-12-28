@@ -1,11 +1,14 @@
-pipeline { 
-    agent { docker { image 'maven:3.3.3'} } 
-    stages { 
-        stage('Build') { 
-            steps { 
-               sh 'mvn --version'
-               sh 'mvn clean install' 			   
-            }
+pipeline {
+    tools {
+        jdk 'openjdk-1.8'
+        maven 'Maven_3_5_2'
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                sh "mvn clean install"
+            } 
         }
     }
 }
