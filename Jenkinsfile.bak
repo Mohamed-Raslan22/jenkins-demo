@@ -1,14 +1,10 @@
 pipeline {
-    tools {
-        jdk 'openjdk-1.8'
-        maven 'Maven_3_5_2'
-    }
+    agent { docker { image 'maven:3.8.4-openjdk-11-slim' } }
     stages {
-        stage('Build') {
+        stage('build') {
             steps {
-                echo 'Building..'
-                sh "mvn clean install"
-            } 
+                sh 'mvn --version'
+            }
         }
     }
 }
