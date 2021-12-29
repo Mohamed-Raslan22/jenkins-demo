@@ -1,14 +1,12 @@
-pipeline {
-        stages {
-            stage('build') {
-                environment {
-                  HOME="."
-                }
-                steps {
-                    sh 'mvn --version'
-					sh 'mvn clean install'
-					sh 'mvn clean compile'
-                }
-           }
-        }
-    }
+	pipeline { 
+	agent any  
+	stages { 
+		stage('Build') { 
+			steps { 
+			   echo 'This is a minimal pipeline.' 
+			   sh 'mvn --version'
+			   sh 'mvn clean install'
+			}
+		}
+	}
+	}
